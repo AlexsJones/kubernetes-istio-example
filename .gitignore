@@ -1,2 +1,4 @@
 deployments
-
+server.crt
+server.key
+server.csr

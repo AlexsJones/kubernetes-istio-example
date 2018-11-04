@@ -1,6 +1,8 @@
 # kubernetes-istio-quickstart
 
+This demos how HTTP/HTTPS routing with Istio gateway/virtual service work using the latest istio sidecar injection system.
 
+You need to install istio CRD then upload the cert whilst following the steps below.
 
 ## Dependencies
 - go get github.com/AlexsJones/vortex
@@ -14,6 +16,7 @@ kubectl create clusterrolebinding cluster-admin-binding \
 ## setup
 - Get Istio and install it on the path https://istio.io/docs/setup/kubernetes/download-release/
 - Install istio, kubectl create -f <ISTIO_PATH>/install/kubernetes/istio-demo-auth.yaml
+- ./generate_tls_key.sh #Adds a TLS key into istio-system gateway
 - kubectl label namespace default istio-injection=enabled
 - ./build_environment.sh default
 - kubectl create -f deployment
