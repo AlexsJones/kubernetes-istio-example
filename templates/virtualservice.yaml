@@ -5,9 +5,9 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "*"
+  - "hello-go.com"
   gateways:
-  - gateway-apps-api
+  - gateway
   http:
   - route:
     - destination:

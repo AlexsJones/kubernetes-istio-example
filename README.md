@@ -28,7 +28,15 @@ kubectl create clusterrolebinding cluster-admin-binding \
 kubectl get svc/istio-ingressgateway --namespace=istio-system
 ```
 
+![image](res/1.png)
+
 Use the external IP to access the istio gateway and route to the correct virtual service
+
+You can then add the IP address to /etc/hosts to force the FDQN and you should see we can correctly see the app over https using our generated cert in istio.
+
+e.g. `XX.XXX.XXX.XXX hello-go.com`
+
+
 
 
 ## JaegerUI
