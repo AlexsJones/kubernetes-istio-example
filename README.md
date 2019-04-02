@@ -14,6 +14,23 @@ kubectl create clusterrolebinding cluster-admin-binding \
 ```
 
 ## setup
+
+### Optional
+```
+gcloud container clusters create example-cluster \
+--zone us-central1-a \
+--node-locations us-central1-a,us-central1-b,us-central1-c --scopes=https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/trace.append,https://www.googleapis.com/auth/devstorage.full_control,https://www.googleapis.com/auth/compute --project=<myproject>
+```
+
+and...
+
+```
+kubectl create clusterrolebinding cluster-admin-binding \
+--clusterrole cluster-admin --user=<yada>
+```
+
+### Deployment
+
 - Get Istio and install it on the path https://istio.io/docs/setup/kubernetes/download-release/
 - Install istio, kubectl create -f <ISTIO_PATH>/install/kubernetes/istio-demo-auth.yaml
 - ./generate_tls_key.sh #Adds a TLS key into istio-system gateway
