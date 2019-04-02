@@ -42,5 +42,14 @@ e.g. `XX.XXX.XXX.XXX hello-go.com`
 ## JaegerUI
 
 ```
-kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 16686:16686 &
+kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 16686:16686
+```
+
+
+## Kaili
+
+```
+kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
+
+#http://localhost:20001/kiali/console
 ```
