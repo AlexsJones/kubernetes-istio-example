@@ -2,13 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hello-go
+  namespace: istio-public
   labels:
     app: hello-go
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-  - port: 9090
+  - port: 5402
     name: http
+    targetPort: 9090
   selector:
     app: hello-go
 ---
@@ -16,6 +18,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: hello-go
+  namespace: istio-public
 spec:
   replicas: 2
   template:

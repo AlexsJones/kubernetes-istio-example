@@ -4,6 +4,8 @@ This demos how HTTP/HTTPS routing with Istio gateway/virtual service work using 
 
 You need to install istio CRD then upload the cert whilst following the steps below.
 
+![image](res/2.png)
+
 ## Dependencies
 - go get github.com/AlexsJones/vortex
 - Admin binding e.g.
@@ -31,10 +33,14 @@ kubectl create clusterrolebinding cluster-admin-binding \
 
 ### Deployment
 
+#### Istio installation
 - Get Istio and install it on the path https://istio.io/docs/setup/kubernetes/download-release/
 - Install istio, kubectl create -f <ISTIO_PATH>/install/kubernetes/istio-demo-auth.yaml
+
+#### Example deployment installation
 - ./generate_tls_key.sh #Adds a TLS key into istio-system gateway
-- kubectl label namespace default istio-injection=enabled
+- kubectl create ns istio-public
+- kubectl label namespace istio-public istio-injection=enabled
 - ./build_environment.sh default
 - kubectl create -f deployment
 
@@ -69,4 +75,11 @@ kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=ja
 kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
 
 #http://localhost:20001/kiali/console
+```
+
+
+## Testing
+
+```
+curl -H 'Host: hello-go.com' <IPADDR> -L
 ```

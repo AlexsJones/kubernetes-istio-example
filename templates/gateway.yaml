@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: gateway
+  name: gateway-example
   namespace: istio-system
 spec:
   selector:
@@ -15,12 +15,15 @@ spec:
      mode: SIMPLE
      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
      privateKey: /etc/istio/ingressgateway-certs/tls.key
-     httpsRedirect: true
     hosts:
     - "hello-go.com"
+    - "*.hello-go.com"
   - port:
       number: 80
       name: http
       protocol: HTTP
+    tls:
+      httpsRedirect: true
     hosts:
     - "hello-go.com"
+    - "*.hello-go.com"
