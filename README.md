@@ -69,7 +69,7 @@ kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=ja
 ```
 
 
-## Kaili
+## Kaili
 
 ```
 kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
@@ -81,5 +81,6 @@ kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=ki
 ## Testing
 
 ```
-curl -H 'Host: hello-go.com' <IPADDR> -L
+curl -H 'Host: hello-go.com' <IP_ADDR> -L -k
+Hello from 10.8.1.8
 ```
