@@ -9,7 +9,7 @@ spec:
   servers:
   - port:
      number: 443
-     name: https
+     name: https-hello-go
      protocol: HTTPS
     tls:
      mode: SIMPLE
@@ -17,13 +17,9 @@ spec:
      privateKey: /etc/istio/ingressgateway-certs/tls.key
     hosts:
     - "hello-go.com"
-    - "*.hello-go.com"
   - port:
       number: 80
-      name: http
+      name: http-hello-go
       protocol: HTTP
-    tls:
-      httpsRedirect: true
     hosts:
     - "hello-go.com"
-    - "*.hello-go.com"
